@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    .navbar-brand {
+        color: black;
+        margin-left: 10px; /* ajusta el margen izquierdo a tu gusto */
+    }
+</style>
+
+
+<nav th:fragment="menuOpciones" class="navbar navbar-expand-lg navbar-dark bg-warning">
+    <a class="navbar-brand" th:href="@{/}" style="color: black; margin-left: 10px;">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/empleado}" style="color: black">Empleados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/historial}" style="color: black">Historial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/reportes}" style="color: black">Reportes</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</html>

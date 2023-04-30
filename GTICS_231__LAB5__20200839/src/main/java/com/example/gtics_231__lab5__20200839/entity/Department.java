@@ -1,9 +1,6 @@
 package com.example.gtics_231__lab5__20200839.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,5 +15,9 @@ public class Department {
 
     @Column(name = "department_name", nullable = false, length = 30)
     private String departmentName;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
 }

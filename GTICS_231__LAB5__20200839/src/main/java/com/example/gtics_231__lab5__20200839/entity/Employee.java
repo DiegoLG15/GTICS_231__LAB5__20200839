@@ -41,15 +41,20 @@ public class Employee {
     @Column(name = "commission_pct", precision = 2, scale = 2)
     private BigDecimal commissionPct;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job jobs;
+
 
     @Column(name = "enabled")
     private Integer enabled;
+
 
 }
