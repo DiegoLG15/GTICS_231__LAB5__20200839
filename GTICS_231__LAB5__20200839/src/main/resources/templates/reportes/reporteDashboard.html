@@ -26,24 +26,8 @@
 
             <div class="col-md-9">
                 <div class="mb-2 row">
-                    <h1 class="pb-2 border-bottom">Reporte – Sueldos</h1>
+                    <h1 class="pb-2 border-bottom" style="font-size: 3rem;">Reportes y Dashboards</h1>
                 </div>
-                <table class="table table-sm">
-                    <tr>
-                        <th>Puesto</th>
-                        <th>Salario Maximo</th>
-                        <th>Salario Minimo</th>
-                        <th>Salario Total</th>
-                        <th>Salario Promedio</th>
-                    </tr>
-                    <tr th:each="empleado, info : ${listaSalario}">
-                        <td th:text="${empleado.getPuesto()}"></td>
-                        <td th:text="${empleado.getSalarioMax()}"></td>
-                        <td th:text="${empleado.getSalarioMin()}"></td>
-                        <td th:text="${empleado.getSalarioTotal()}"></td>
-                        <td th:text="${empleado.getSalarioProm()}"></td>
-                    </tr>
-                </table>
             </div>
         </div>
     </div>

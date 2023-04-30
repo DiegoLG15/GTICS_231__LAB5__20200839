@@ -21,6 +21,10 @@ public class ReporteController {
 
     @GetMapping(value = { ""})
     public String dashboardReporte(Model model) {
+        return "/reportes/reporteDashboard";
+    }
+    @GetMapping(value = { "/sueldo"})
+    public String sueldoReporte(Model model) {
 
         List<Salario> lista = employeeRepository.empleadoSalario();
         model.addAttribute("listaSalario", lista);
