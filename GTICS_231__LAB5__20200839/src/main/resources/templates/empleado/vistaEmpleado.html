@@ -14,6 +14,7 @@
     <div class="container px-4 py-5">
         <div class="mb-2 row">
             <h1 class="pb-2 border-bottom">Empleados Totales</h1>
+            <div class="alert alert-success" role="alert" th:if="${msg != null}" th:text="${msg}">
             <form method="post" th:action="@{/empleado/buscar}">
                 <div class="mb-3 row">
                     <div class="col-10">
@@ -45,7 +46,7 @@
                 <td th:text="${empleado.getPuesto()}"></td>
                 <td th:text="${empleado.getDepartamento()}"></td>
                 <td th:text="${empleado.getCiudad()}"></td>
-                <td><a class="btn btn-primary" th:href="@{'/empleado/edit' + '?id=' + ${empleado.getId()}}">Editar</a>
+                <td><a class="btn btn-primary" th:href="@{'/empleado/editar' + '?id=' + ${empleado.getId()}}">Editar</a>
                 </td>
                 <td><a class="btn btn-danger" th:href="@{'/empleado/delete' + '?id=' + ${empleado.getId()}}">Borrar</a>
                 </td>

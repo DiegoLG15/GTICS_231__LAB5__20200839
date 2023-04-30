@@ -1,6 +1,7 @@
 package com.example.gtics_231__lab5__20200839.repository;
 
 import com.example.gtics_231__lab5__20200839.dto.Empleados;
+import com.example.gtics_231__lab5__20200839.dto.Jefe;
 import com.example.gtics_231__lab5__20200839.dto.Salario;
 import com.example.gtics_231__lab5__20200839.entity.Employee;
 import jakarta.transaction.Transactional;
@@ -45,9 +46,23 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "INSERT INTO hr.employees (first_name, last_name, email, password, job_id, salary, manager_id, department_id) \n" +
-            "VALUES (?1, ?2, ?3, SHA2(?4, 256), ?6, ?7, ?8, ?9)")
-    void nuevoEmpleado(String nombre, String apellido,String correo,String contrasena,String jobId, Integer salary,Integer managerId,Integer departmentId);
+    @Query(nativeQuery = true, value = "INSERT INTO employees (first_name, last_name, email, password, job_id, salary, manager_id, department_id) \n" +
+            "VALUES (?1, ?2, ?3, SHA2(?4, 256), ?5, ?6, ?7, ?8)")
+    void nuevoEmpleado(String nombre, String apellido, String correo, String contrasena, String jobId, BigDecimal salary, Integer managerId, Integer departmentId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE employees\n" +
+            "SET first_name = ?1, last_name = ?2, email = ?3, password = SHA2(?4, 256) , job_id = ?5 , salary=?6, manager_id = ?7,department_id = ?8\n" +
+            "WHERE employee_id = ?9", nativeQuery = true)
+    void actualizarEmpleado(String nombre, String apellido,String correo,String contrasena,String jobId, BigDecimal salary,Integer managerId,Integer departmentId, Integer employeeid);
 
+    @Query(nativeQuery = true, value = "SELECT \n" +
+            "  employee_id as id, \n" +
+            "  CONCAT(first_name, ' ', last_name) AS nombrecompleto\n" +
+            "FROM \n" +
+            "  hr.employees \n" +
+            "WHERE \n" +
+            "  employee_id IN (SELECT manager_id FROM hr.employees)")
+    List<Jefe> buscarJefe();
 }
