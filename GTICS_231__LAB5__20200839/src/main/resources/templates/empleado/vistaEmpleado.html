@@ -14,7 +14,7 @@
     <div class="container px-4 py-5">
         <div class="mb-2 row">
             <h1 class="pb-2 border-bottom">Empleados Totales</h1>
-            <div class="alert alert-success" role="alert" th:if="${msg != null}" th:text="${msg}">
+            <div class="alert alert-success" role="alert" th:if="${msg != null}" th:text="${msg}"></div>
             <form method="post" th:action="@{/empleado/buscar}">
                 <div class="mb-3 row">
                     <div class="col-10">
